@@ -1,16 +1,12 @@
 {
-  "framework": null,
-  "buildCommand": "tsc",
-  "outputDirectory": "dist",
-  "devCommand": "tsx api/tweet.ts",
   "functions": {
-    "api/*.ts": {
+    "api/tweet.ts": {
         "memory": 1024,
         "maxDuration": 10
     }
   },
   "crons": [{
-    "path": "/api/cron",
+    "path": "/api/tweet",
     "schedule": "0 * * * *"
   }]
 }
