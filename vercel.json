@@ -1,6 +1,15 @@
 {
-    "crons": [{
-      "path": "/api/cron",
-      "schedule": "0 * * * *"
-    }]
-  }
+  "framework": null,
+  "buildCommand": "tsc",
+  "outputDirectory": "dist",
+  "devCommand": "tsx api/tweet.ts",
+  "functions": {
+    "api/*.ts": {
+      "runtime": "nodejs18"
+    }
+  },
+  "crons": [{
+    "path": "/api/cron",
+    "schedule": "0 * * * *"
+  }]
+}
