@@ -7,6 +7,6 @@
   },
   "crons": [{
     "path": "/api/tweet",
-    "schedule": "0 * * * *"
+    "schedule": "13,43 * * * *"
   }]
 }
