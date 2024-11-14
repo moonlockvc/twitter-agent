@@ -3,15 +3,15 @@ import { generateTweet } from '../lib/openai';
 import { postTweet } from '../lib/twitter';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Only allow POST method
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  // Verify API key from request header
-  const apiKey = req.headers['x-api-key'];
-  if (apiKey !== process.env.API_SECRET_KEY) {
-    return res.status(401).json({ error: 'Unauthorized' });
+  // Check if request is from Vercel Cron
+  const isVercelCron = req.headers['x-vercel-cron'] === '1';
+  
+  // If not a Vercel Cron, verify API key
+  if (!isVercelCron) {
+    const apiKey = req.headers['x-api-key'];
+    if (apiKey !== process.env.API_SECRET_KEY) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
   }
 
   try {
@@ -20,7 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // await postTweet(tweet);
     return res.status(200).json({ success: true });
   } catch (error) {
-    // Don't expose error details to client
     console.error(error);
     return res.status(500).json({ error: 'Internal server error' });
   }
