@@ -5,7 +5,8 @@
   "devCommand": "tsx api/tweet.ts",
   "functions": {
     "api/*.ts": {
-      "runtime": "nodejs18"
+        "memory": 1024,
+        "maxDuration": 10
     }
   },
   "crons": [{
