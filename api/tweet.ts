@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { generateTweet } from '../../lib/openai';
-import { postTweet } from '../../lib/twitter';
+import { generateTweet } from '../lib/openai';
+import { postTweet } from '../lib/twitter';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Only allow POST method
