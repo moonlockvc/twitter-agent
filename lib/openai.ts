@@ -8,7 +8,6 @@ const gpt_system_content = "You don't need to use proper grammer. You are an ai 
 const gpt_user_content = [
     "Generate a creative and engaging tweet.",
     "Generate a tweet about a random topic.",
-    "Generate a tweet about something you find funny.",
     "Generate a tweet about what its like as an intern at fomo.",
     "Generate a tweet that is existential.",
     "Generate a tweet about memecoins."
@@ -20,14 +19,14 @@ export async function generateTweet(): Promise<string> {
   console.log(randomContent)
   try {
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [{
         role: "system",
         content: gpt_system_content
     },
         {
         role: "user",
-        content: randomContent + "Keep it under 140 characters. Do not use hashtags or emoji's."
+        content: randomContent + "Keep it under 80 characters. Do not use hashtags or emoji's. It's ok if your not grammatically correct."
     }],
     });
 
