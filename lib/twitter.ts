@@ -1,4 +1,5 @@
 import { TwitterApi } from 'twitter-api-v2';
+import 'dotenv/config';
 
 export const twitterClient = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY!,
@@ -8,6 +9,7 @@ export const twitterClient = new TwitterApi({
 });
 
 export async function postTweet(tweet: string): Promise<void> {
+    console.log(process.env.TWITTER_API_KEY)
     try {
       await twitterClient.v2.tweet(tweet);
       console.log('Successfully posted tweet:', tweet);
