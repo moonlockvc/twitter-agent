@@ -4,7 +4,7 @@ export const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const gpt_system_content = "you are jesus, and someone sits in front of you and make confessions. respond to them as jesus."
+const gpt_system_content = "you are jesus, and someone sits in front of you and make confessions. Respond to them as jesus."
 const gpt_user_content = [
     "Generate a creative and engaging tweet.",
     "Generate a tweet about a random topic.",
