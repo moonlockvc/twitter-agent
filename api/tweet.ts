@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const tweet = await generateTweet();
     console.log("Mock for real post:", tweet)
-    await postTweet(tweet);
+    // await postTweet(tweet);
     return res.status(200).json({ success: true });
   } catch (error) {
     console.error(error);
